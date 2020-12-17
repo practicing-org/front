@@ -22,7 +22,6 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/profiles" component={Profiles}  />
         <Route path="/history" component={History}  />
-        {/* asd */}
       </div>
   );
 }

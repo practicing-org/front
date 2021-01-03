@@ -31,7 +31,7 @@ function* logIn(action){//{data:{id,password}}
 
 function* logOut(action){
     try{
-        // const result = yield call(logOutApi,action.data);
+        // const result = yield call(logOutApi,action.data);'
         yield put({
             type:LOG_OUT_SUCCESS,
         });
@@ -41,7 +41,7 @@ function* logOut(action){
             data:err,
         })
     }
-}
+}  
 
 function* watchLogIn(){
     yield takeLatest(LOG_IN_REQUEST,logIn);

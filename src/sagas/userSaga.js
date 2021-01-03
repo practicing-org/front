@@ -50,7 +50,7 @@ function* watchLogIn(){
 function* watchLogOut(){
     yield takeLatest(LOG_OUT_REQUEST,logOut);
 }
-
+ 
 export default function* userSaga(){
     yield all([
         call(watchLogIn),

@@ -5,9 +5,10 @@ import PostForm from "./PostForm"
 
 function Home(){
     const {posts} = useSelector(state=>state.postReducer);
+    const {me} = useSelector(state=>state.userReducer);
     return (
         <div>
-            <PostForm />
+            {me&&<PostForm />}
             {posts.map(post=><Post post={post} />)}
         </div>
     )

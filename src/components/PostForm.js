@@ -1,23 +1,36 @@
-import React,{useCallback} from 'react';
+import React,{useCallback,useEffect} from 'react';
 import useInput from "../hooks/useInput"
-import {useDispatch} from "react-redux"
+import {useDispatch,useSelector} from "react-redux"
 import {ADD_POST_REQUEST} from "../reducers/postReducer"
 
 function PostForm(){
     const [title,setTitle,onChangeTitle] = useInput("");
     const [description,setDescription,onChangeDescription] = useInput("");
     const dispatch = useDispatch();
+    const {me} = useSelector(state=>state.userReducer);
+    const {addPostLoading,addPostDone} = useSelector(state=>state.postReducer);
+    
+    //======================== useEffect 안됌? ==============================
+    // useEffect(()=>{
+    //     if(addPostDone){
+    //         setTitle("");
+    //         setDescription("");
+    //     }
+    // },[addPostDone])
 
     const onSubmit = useCallback((e)=>{
         e.preventDefault();
         dispatch({
+            // type:ADD_POST_REQUEST,
             type:ADD_POST_REQUEST,
             data:{
-                title,description
+                title,
+                description,
+                key:me.key,
             }
         })
-        // console.log(title,description);
     },[title,description]);
+
     return (
         <div>
             <form onSubmit={onSubmit} action="">
@@ -27,7 +40,7 @@ function PostForm(){
                 <div>
                     <textarea name="description" onChange={onChangeDescription} id="" cols="30" rows="10">{description}</textarea>
                 </div>
-                <div><input type="submit" value="addPost"/></div>
+                <div><input type="submit" value={addPostLoading?"loding...":"addPost"}/></div>
             </form>
         </div>
     )

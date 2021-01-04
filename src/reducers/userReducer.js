@@ -25,7 +25,8 @@ function userReducer(state=initialState,action){
             case LOG_IN_REQUEST:
             draft.logInLoading = true;
             break;
-            case LOG_IN_SUCCESS://{data:{id,password}}
+            case LOG_IN_SUCCESS://{data:{id,password,key}}
+            action.data.key = "rsua";
             draft.logInLoading = false;
             draft.logInDone = true;
             draft.me = action.data;

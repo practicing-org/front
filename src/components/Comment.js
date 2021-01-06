@@ -1,11 +1,13 @@
 import React from 'react';
 
-function Comment({comment}){
+const Comment = ({comment}) => {
 
     return (
         <div>
+            <hr/>
             <p>name : {comment.user.name}</p>
             <p>{comment.description}</p>
+            
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import Comment from "./Comment"
 import CommentForm from "./CommentForm"
 
-function Comments({post}){
+const Comments = ({post}) => {
 
     return (
         <div>

@@ -3,7 +3,7 @@ import useInput from "../hooks/useInput"
 import {useDispatch,useSelector} from "react-redux"
 import {ADD_POST_REQUEST} from "../reducers/postReducer"
 
-function PostForm(){
+const PostForm = () => {
     const [title,setTitle,onChangeTitle] = useInput("");
     const [description,setDescription,onChangeDescription] = useInput("");
     const dispatch = useDispatch();
@@ -11,12 +11,12 @@ function PostForm(){
     const {addPostLoading,addPostDone} = useSelector(state=>state.postReducer);
     
     //======================== useEffect 안됌? ==============================
-    // useEffect(()=>{
-    //     if(addPostDone){
-    //         setTitle("");
-    //         setDescription("");
-    //     }
-    // },[addPostDone])
+    useEffect(()=>{
+        if(addPostDone){
+            setTitle("");
+            // setDescription("");     // <= description 삭제 X
+        }
+    },[addPostDone])
 
     const onSubmit = useCallback((e)=>{
         e.preventDefault();
@@ -27,8 +27,11 @@ function PostForm(){
                 title,
                 description,
                 key:me.key,
+                name:me.name,
             }
         })
+        // setTitle("");
+        // setDescription("");
     },[title,description]);
 
     return (

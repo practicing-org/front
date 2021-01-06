@@ -16,7 +16,7 @@ display:flex;
 &>#right_side{flex-grow:1;}
 `
 
-function Body(){
+const Body = () => {
     
     const {me} = useSelector(state=>state.userReducer);
 

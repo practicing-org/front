@@ -13,7 +13,7 @@ border:1px solid black;
 &>.submit_box{}
 `
 
-function LoginForm(){
+const LoginForm = () => {
     const dispatch = useDispatch();
     const [id,setId,onChangeId] = useInput("");
     const [password,setPassword,onChangePassword] = useInput("");

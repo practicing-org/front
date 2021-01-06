@@ -1,15 +1,12 @@
-
-import './App.css';
-import React from "react"
-import Header from "./components/Header"
+import React from 'react';
 import {Route,Switch} from "react-router-dom"
-import Home from "./components/Home"
-import Profile from "./components/Profile"
-import FriendList from "./components/FriendList"
+import Home from "./Home"
+import Profile from "./Profile"
+import FriendList from "./FriendList"
 import styled from "styled-components"
-import LoginForm from "./components/LoginForm"
-import {useSelector} from "react-redux";
-import MyProfile from "./components/MyProfile"
+import LoginForm from "./LoginForm"
+import {useSelector} from "react-redux"
+import MyProfile from "./MyProfile"
 
 const BodyStyle = styled.div`
 display:flex;
@@ -19,14 +16,12 @@ display:flex;
 &>#right_side{flex-grow:1;}
 `
 
-const App = () => {
-  
-  const {me} = useSelector(state=>state.userReducer);
+const Body = () => {
+    
+    const {me} = useSelector(state=>state.userReducer);
 
-  return (
-    <div className="App">
-      <Header />
-      <BodyStyle>
+    return (
+        <BodyStyle>
             <div className="body_child" id="left_side">
                 {me?<MyProfile me={me} />:<LoginForm />}
             </div>
@@ -44,8 +39,7 @@ const App = () => {
                 <h2>right_side</h2>
             </div>
         </BodyStyle>
-    </div>
-  );
-};
+    )
+}
 
-export default App;
+export default Body;
